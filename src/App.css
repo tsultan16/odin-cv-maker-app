@@ -14,7 +14,7 @@
 
 
 header {
-  height: 20vh;
+  height: 4em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,12 +22,45 @@ header {
 
 main {
   border: 1px solid green;
-  height: 70vh;
+  /* height: 70vh; */
 }
 
 footer {
-  height: 10vh;
+  height: 3em;
 }
+
+section {
+  border: 1px solid magenta;
+}
+
+.inputs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1em;
+}
+
+button {
+  background-color: aquamarine;
+  padding: 0.5em 1em;
+}
+
+.education-item {
+  border: 1px solid green;
+  margin: 1em; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .react-logo {
   height: 6em;
