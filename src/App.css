@@ -1,0 +1,57 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  border: 1px solid blue;
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  /* padding: 2rem; */
+  /* text-align: center; */
+}
+
+
+header {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  border: 1px solid green;
+  height: 70vh;
+}
+
+footer {
+  height: 10vh;
+}
+
+.react-logo {
+  height: 6em;
+  padding: 1.5em;
+  
+  will-change: shadow;
+  transition: shadow 100ms;
+  
+  animation-duration: 4s;
+  animation-name: logo-spin;
+  animation-iteration-count: infinite;
+  animation-direction: forward;
+  animation-timing-function: linear;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
