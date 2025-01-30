@@ -55,7 +55,7 @@ function DetailsEdit({ info, onChange, onSave, displayStyle }) {
 function Details({ info, onEdit, displayStyle }) {
     return (
         <section className="general" style={{display: displayStyle}}>
-            <h5>General</h5>
+            <h3>General</h3>
 
             <div className="inputs">
                 <p>{info.firstName + " " + info.lastName}</p>
