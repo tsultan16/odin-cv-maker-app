@@ -10,13 +10,23 @@ const initial_list = [
 export default function Education() {
     const [items, setItems] = useState(initial_list);
     const [showAdd, setShowAdd] = useState(false);
+    const [editMode, setEditMode] = useState(false)
+
 
     console.log("items: ", items);
     console.log("showAdd: ", showAdd);
-    
-    const clickHandle = (e) => {
+
+    const clickAddHandle = (e) => {
         setShowAdd(true);
     };
+
+    const clickEditHandle = (e) => {
+        setEditMode(true);
+    };
+
+    const onSave = (e) => {
+        setEditMode(false);
+    }
 
     const handleAddItem = (new_item) => {
         if (new_item !== null) {
@@ -53,30 +63,54 @@ export default function Education() {
     return (
         <section className="education">
             <h5>Your Education Details</h5>
-            <EducationList items={items} onDeleteItem={handleDeleteItem} onChangeItem={handleChangeItem} />
-            <button onClick={clickHandle}>Add Education</button>
-            <AddEducation onAdd={handleAddItem} show={showAdd}/>
+            <EducationList items={items} displayStyle={!editMode} />
+            <EducationListEdit items={items} onDeleteItem={handleDeleteItem} onChangeItem={handleChangeItem} onSave={onSave} displayStyle={editMode} />
+            <div className="education-buttons">
+                <button onClick={clickAddHandle} style={{display: !editMode?'block':'none'}}>Add Education</button>
+                <button onClick={clickEditHandle} style={{display: !editMode?'block':'none'}} >Edit</button>
+            </div>
+            <AddEducation onAdd={handleAddItem} show={showAdd} />
         </section>
     );
 }
 
 
-
-function EducationList({ items, onDeleteItem, onChangeItem }) {
+function EducationList({ items, displayStyle }) {
     return (
-        <ul>
+        <ul style={{display: displayStyle?'block':'none'}}>
             {items.map((item) => (
                 <li key={item.id}>
                     <div className="education-item">
-                        <p>School Name - <input type="text" value={item.schoolName} onChange={(e) => onChangeItem(e, item, 'schoolName')}/></p>
-                        <p>Title of Study - <input type="text" value={item.titleOfStudy} onChange={(e) => onChangeItem(e, item, 'titleOfStudy')}/></p>
-                        <p>Date Started - <input type="date" value={item.dateStarted} onChange={(e) => onChangeItem(e, item, 'dateStarted')}/></p>
-                        <p>Date Completed - <input type="date" value={item.dateCompleted} onChange={(e) => onChangeItem(e, item, 'dateCompleted')}/></p>
-                        <button onClick={() => onDeleteItem(item.id)}>Delete</button>
+                        <p>School Name - {item.schoolName}</p>
+                        <p>Title of Study - {item.titleOfStudy}</p>
+                        <p>Date Started - {item.dateStarted}</p>
+                        <p>Date Completed - {item.dateCompleted}</p>
                     </div>               
                 </li>    
             ))}
         </ul>   
+    );
+}
+
+
+function EducationListEdit({ items, onDeleteItem, onChangeItem, onSave, displayStyle }) {
+    return (
+        <>
+            <ul style={{display: displayStyle?'block':'none'}}>
+                {items.map((item) => (
+                    <li key={item.id}>
+                        <div className="education-item">
+                            <p>School Name - <input type="text" value={item.schoolName} onChange={(e) => onChangeItem(e, item, 'schoolName')}/></p>
+                            <p>Title of Study - <input type="text" value={item.titleOfStudy} onChange={(e) => onChangeItem(e, item, 'titleOfStudy')}/></p>
+                            <p>Date Started - <input type="date" value={item.dateStarted} onChange={(e) => onChangeItem(e, item, 'dateStarted')}/></p>
+                            <p>Date Completed - <input type="date" value={item.dateCompleted} onChange={(e) => onChangeItem(e, item, 'dateCompleted')}/></p>
+                            <button onClick={() => onDeleteItem(item.id)}>Delete</button>               
+                        </div>               
+                    </li>    
+                ))}
+            </ul>
+            <button onClick={onSave} style={{display: displayStyle?'block':'none'}}>Save</button>   
+        </>
     );
 }
 

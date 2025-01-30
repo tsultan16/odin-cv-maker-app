@@ -56,6 +56,11 @@ ul {
   list-style-type: none;
 }
 
+.education-buttons{
+  display: flex;
+  gap: 2em;
+}
+
 
 
 
