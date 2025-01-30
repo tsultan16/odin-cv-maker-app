@@ -12,6 +12,8 @@ export default function Education() {
     const [showAdd, setShowAdd] = useState(false);
     const [editMode, setEditMode] = useState(false)
 
+    // save general details to local storage
+    localStorage.setItem('education_details', JSON.stringify(items)); 
 
     console.log("items: ", items);
     console.log("showAdd: ", showAdd);
@@ -140,8 +142,8 @@ function AddEducation({ onAdd, show }) {
     };
 
     const saveHandler = () => {
-        const new_item = {...details};        
-        setDetails({id: crypto.randomUUID(), schoolName: "", titleOfStudy: "", dateStarted: "", dateCompleted: ""});
+        const new_item = {...details, id: crypto.randomUUID()};        
+        setDetails({schoolName: "", titleOfStudy: "", dateStarted: "", dateCompleted: ""});
         onAdd(new_item);
         console.log("Clicked save.");
     }

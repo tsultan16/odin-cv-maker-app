@@ -4,6 +4,9 @@ export default function General() {
     const [generalDetails, setGeneralDetails] = useState({firstName: "", lastName: "", email: "", phone: "", opening:""})
     const [editMode, setEditMode] = useState(true);
 
+    // save general details to local storage
+    localStorage.setItem('general_details', JSON.stringify(generalDetails)); 
+
     const handleChange = (event, field) => {
         let updated_details = {...generalDetails};
         updated_details[field] = event.target.value; 

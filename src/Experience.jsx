@@ -12,6 +12,8 @@ export default function Experience() {
     const [showAdd, setShowAdd] = useState(false);
     const [editMode, setEditMode] = useState(false)
 
+    // save general details to local storage
+    localStorage.setItem('experience_details', JSON.stringify(items)); 
 
     console.log("items: ", items);
     console.log("showAdd: ", showAdd);
@@ -158,8 +160,8 @@ function AddExperience({ onAdd, show }) {
     };
 
     const saveHandler = () => {
-        const new_item = {...details};        
-        setDetails({id: crypto.randomUUID(), companyName: "", positionTitle: "", dateStart: "", dateEnd: ""});
+        const new_item = {...details, id: crypto.randomUUID()};        
+        setDetails({companyName: "", positionTitle: "", dateStart: "", dateEnd: ""});
         onAdd(new_item);
         console.log("Clicked save.");
     }
