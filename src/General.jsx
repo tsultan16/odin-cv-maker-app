@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function General() {
-    const [generalDetails, setGeneralDetails] = useState({firstName: "", lastName: "", email: "", phone: ""})
+    const [generalDetails, setGeneralDetails] = useState({firstName: "", lastName: "", email: "", phone: "", opening:""})
     const [editMode, setEditMode] = useState(true);
 
     const handleChange = (event, field) => {
@@ -32,13 +32,16 @@ export default function General() {
 function DetailsEdit({ info, onChange, onSave, displayStyle }) {
     return (
         <section className="general" style={{display: displayStyle}}>
-            <h5>General</h5>
+            <h3>General</h3>
 
             <div className="inputs">
                 <input value={info.firstName} placeholder="First Name" onChange={(e) => onChange(e, "firstName")}/>
                 <input value={info.lastName} placeholder="Last Name" onChange={(e) => onChange(e, "lastName")}/>
                 <input value={info.email} placeholder="Email" onChange={(e) => onChange(e, "email")}/>
                 <input value={info.phone} placeholder="Phone" onChange={(e) => onChange(e, "phone")}/>
+            </div>
+            <div lassName="opening">
+                <textarea id="opening" name="opening" rows="5" cols="50" placeholder="Opening Statement (Optional)" onChange={(e) => onChange(e, "opening")}>{info.opening}</textarea>
             </div>
             <button onClick={onSave}>Save</button>
 
@@ -55,6 +58,9 @@ function Details({ info, onEdit, displayStyle }) {
                 <p>{info.firstName + " " + info.lastName}</p>
                 <p>{info.email}</p>
                 <p>{info.phone}</p>
+            </div>
+            <div className="opening">
+                <p>{info.opening}</p>
             </div>
             <button onClick={onEdit}>Edit</button>
 
