@@ -88,6 +88,7 @@ function ExperienceList({ items, displayStyle }) {
                             <p>Date End - {item.dateEnd}</p>
                         </div>
                         <div className="job-responsibilities">
+                            <br /> 
                             <p>Job Responsibilities: </p>
                             <p>{item.responsibilities}</p>
                         </div>               
@@ -111,7 +112,8 @@ function ExperienceListEdit({ items, onDeleteItem, onChangeItem, onSave, display
                                 <p>Title of Study - <input type="text" value={item.positionTitle} onChange={(e) => onChangeItem(e, item, 'positionTitle')}/></p>
                                 <p>Title of Study - <input type="text" value={item.positionTitle} onChange={(e) => onChangeItem(e, item, 'positionTitle')}/></p>
                                 <p>Date Start - <input type="date" value={item.dateStart} onChange={(e) => onChangeItem(e, item, 'dateStart')}/></p>
-                                <p>Date End - <input type="date" value={item.dateEnd} onChange={(e) => onChangeItem(e, item, 'dateEnd')}/></p>             
+                                <p>Date End - <input type="date" value={item.dateEnd} onChange={(e) => onChangeItem(e, item, 'dateEnd')}/></p>    
+                                <br />         
                             </div>               
                             <div className="job-responsibilities">
                                 <textarea id="responsibilities" name="responsibilities" rows="5" cols="50" placeholder="Job Responsibilities" onChange={(e) => onChangeItem(e, item, "responsibilities")}>{item.responsibilities}</textarea>
