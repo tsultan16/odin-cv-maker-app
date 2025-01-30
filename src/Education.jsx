@@ -137,4 +137,3 @@ function AddEducation({ onAdd, show }) {
     );
 
 }
-

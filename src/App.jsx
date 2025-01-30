@@ -10,7 +10,7 @@ function Header() {
   return (
     <header>
       <img src={reactLogo} className="react-logo" alt="React logo" />
-      <h2>CV Maker 1.0</h2>
+      <h2>CV Maker App</h2>
     </header>
   );
 }
