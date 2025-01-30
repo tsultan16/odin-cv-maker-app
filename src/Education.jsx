@@ -63,11 +63,11 @@ export default function Education() {
     return (
         <section className="education">
             <h5>Your Education Details</h5>
-            <EducationList items={items} displayStyle={!editMode} />
-            <EducationListEdit items={items} onDeleteItem={handleDeleteItem} onChangeItem={handleChangeItem} onSave={onSave} displayStyle={editMode} />
+            <EducationList items={items} displayStyle={!editMode && !showAdd} />
+            <EducationListEdit items={items} onDeleteItem={handleDeleteItem} onChangeItem={handleChangeItem} onSave={onSave} displayStyle={editMode  && !showAdd} />
             <div className="education-buttons">
-                <button onClick={clickAddHandle} style={{display: !editMode?'block':'none'}}>Add Education</button>
-                <button onClick={clickEditHandle} style={{display: !editMode?'block':'none'}} >Edit</button>
+                <button onClick={clickAddHandle} style={{display: (!editMode && !showAdd)?'block':'none'}}>Add Education</button>
+                <button onClick={clickEditHandle} style={{display: (!editMode && !showAdd)?'block':'none'}} >Edit</button>
             </div>
             <AddEducation onAdd={handleAddItem} show={showAdd} />
         </section>
@@ -164,8 +164,10 @@ function AddEducation({ onAdd, show }) {
                 </label>
                 
             </div>
-            <button onClick={saveHandler}>Save</button>
-            <button onClick={cancelHandler}>Cancel</button>
+            <div className="education-buttons">
+                <button onClick={saveHandler}>Save</button>
+                <button onClick={cancelHandler}>Cancel</button>
+            </div>
         </div>
 
     );
