@@ -19,12 +19,14 @@ export default function Education() {
     };
 
     const handleAddItem = (new_item) => {
-        console.log("Adding item with id: ", new_item.id);
-        // record new item
-        setItems([...items, new_item])     
+        if (new_item !== null) {
+            console.log("Adding item with id: ", new_item.id);
+            // record new item
+            setItems([...items, new_item])         
+            console.log("Added new education item.");
+        }
         // hide add form
         setShowAdd(false);
-        console.log("Added new education item.");
     }
 
     const handleDeleteItem = (delete_item_id) => {
@@ -74,23 +76,7 @@ function EducationList({ items, onDeleteItem, onChangeItem }) {
                     </div>               
                 </li>    
             ))}
-        </ul>
-        
-    );
-
-}
-
-
-function EducationListItem( {item, onDelete} ) {
-    console.log("list item:", item);
-    return (
-        <div className="education-item">
-            <p>School Name - {item.schoolName}</p>
-            <p>Title of Study - {item.titleOfStudy}</p>
-            <p>Date Started - {item.dateStarted}</p>
-            <p>Date Completed - {item.dateCompleted}</p>
-            <button onClick={onDelete}>Delete</button>
-        </div>
+        </ul>   
     );
 }
 
@@ -119,11 +105,16 @@ function AddEducation({ onAdd, show }) {
         setDetails({ ...details, dateCompleted: e.target.value  });
     };
 
-    const saveInfo = () => {
+    const saveHandler = () => {
         const new_item = {...details};        
         setDetails({id: crypto.randomUUID(), schoolName: "", titleOfStudy: "", dateStarted: "", dateCompleted: ""});
         onAdd(new_item);
         console.log("Clicked save.");
+    }
+
+    const cancelHandler = () => {
+        onAdd(null);
+        console.log("Clicked cancel.");
     }
 
     return (
@@ -139,8 +130,8 @@ function AddEducation({ onAdd, show }) {
                 </label>
                 
             </div>
-            <button onClick={saveInfo}>Save</button>
-
+            <button onClick={saveHandler}>Save</button>
+            <button onClick={cancelHandler}>Cancel</button>
         </div>
 
     );
