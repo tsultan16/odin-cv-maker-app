@@ -17,7 +17,12 @@ function Header() {
 
 
 function Main() {
+  const [submitted, setSubmitted] = useState(false);
+  console.log("Form submitted: ", submitted);
+
+
   const onSubmit = (e) => {
+
     // get form input from local storage
     const general_details = JSON.parse(localStorage.getItem('general_details'));
     const education_details = JSON.parse(localStorage.getItem('education_details'));
@@ -27,6 +32,8 @@ function Main() {
     console.log("general details", general_details);
     console.log("education details", education_details);
     console.log("experience details", experience_details);
+
+    setSubmitted(true);
 
   };
   
