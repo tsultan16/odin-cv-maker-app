@@ -35,9 +35,16 @@ export default function Education() {
     const handleChangeItem = (event, updated_item, field) => {
         console.log(`Changing item ${updated_item.schoolName}, field: ${field}`)
         // update item details
-        updated_item[field] = event.target.value;
-        let items_filtered = items.filter(item => item.id !== updated_item.id);
-        setItems([...items_filtered, updated_item]);
+        const items_updated = items.map(item => {
+            if (item.id !== updated_item.id) {
+                return item;
+            } else {
+                item[field] = event.target.value;
+                return item;
+            }
+            
+        });
+        setItems([...items_updated]);
     };
 
 
