@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 const initial_list = [
-    {id: crypto.randomUUID(),  schoolName: "Uni Melbourne", titleOfStudy: "Master IT", dateStarted:"20-2-2023", dateCompleted:"1-12-2024"},
-    {id: crypto.randomUUID(),  schoolName: "UMN", titleOfStudy: "Master Physics", dateStarted:"16-8-2020", dateCompleted:"25-7-2022"},
-    {id: crypto.randomUUID(),  schoolName: "SUNY Poly", titleOfStudy: "BS ECE, Applied Math", dateStarted:"8-9-2012", dateCompleted:"2-5-2016"},   
+    {id: crypto.randomUUID(),  schoolName: "Uni Melbourne", titleOfStudy: "Master IT", dateStarted:"2023-03-20", dateCompleted:"2024-12-01"},
+    {id: crypto.randomUUID(),  schoolName: "UMN", titleOfStudy: "Master Physics", dateStarted:"2020-08-16", dateCompleted:"2022-07-25"},
+    {id: crypto.randomUUID(),  schoolName: "SUNY Poly", titleOfStudy: "BS ECE, Applied Math", dateStarted:"2012-09-08", dateCompleted:"2016-05-02"},   
 ];
 
 
@@ -33,7 +33,7 @@ export default function Education() {
     }
 
     const handleChangeItem = (event, updated_item, field) => {
-        console.log(`Changing item ${updated_item.schoolName}, field: ${field}`)
+        // console.log(`Changing item ${updated_item.schoolName}, field: ${field}`)
         // update item details
         const items_updated = items.map(item => {
             if (item.id !== updated_item.id) {
@@ -67,9 +67,9 @@ function EducationList({ items, onDeleteItem, onChangeItem }) {
                 <li key={item.id}>
                     <div className="education-item">
                         <p>School Name - <input type="text" value={item.schoolName} onChange={(e) => onChangeItem(e, item, 'schoolName')}/></p>
-                        <p>Title of Study - {item.titleOfStudy}</p>
-                        <p>Date Started - {item.dateStarted}</p>
-                        <p>Date Completed - {item.dateCompleted}</p>
+                        <p>Title of Study - <input type="text" value={item.titleOfStudy} onChange={(e) => onChangeItem(e, item, 'titleOfStudy')}/></p>
+                        <p>Date Started - <input type="date" value={item.dateStarted} onChange={(e) => onChangeItem(e, item, 'dateStarted')}/></p>
+                        <p>Date Completed - <input type="date" value={item.dateCompleted} onChange={(e) => onChangeItem(e, item, 'dateCompleted')}/></p>
                         <button onClick={() => onDeleteItem(item.id)}>Delete</button>
                     </div>               
                 </li>    
