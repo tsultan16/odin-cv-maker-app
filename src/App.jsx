@@ -17,11 +17,25 @@ function Header() {
 
 
 function Main() {
+  const onSubmit = (e) => {
+    // get form input from local storage
+    const general_details = JSON.parse(localStorage.getItem('general_details'));
+    const education_details = JSON.parse(localStorage.getItem('education_details'));
+    const experience_details = JSON.parse(localStorage.getItem('experience_details'));
+
+    console.log("Form Submitted!");
+    console.log("general details", general_details);
+    console.log("education details", education_details);
+    console.log("experience details", experience_details);
+
+  };
+  
   return (
     <main>
       <General />
       <Education />
-      <Experience />      
+      <Experience />   
+      <button id="submit-button" onClick={onSubmit}>Submit</button>  
     </main>
   );
 }
