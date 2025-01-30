@@ -11,7 +11,7 @@ export default function General() {
     };
 
     const handleSave = (e) => {
-        alert("Saved General Info!");
+        // alert("Saved General Info!");
         setEditMode(false);        
     }
 
@@ -40,8 +40,8 @@ function DetailsEdit({ info, onChange, onSave, displayStyle }) {
                 <input value={info.email} placeholder="Email" onChange={(e) => onChange(e, "email")}/>
                 <input value={info.phone} placeholder="Phone" onChange={(e) => onChange(e, "phone")}/>
             </div>
-            <div lassName="opening">
-                <textarea id="opening" name="opening" rows="5" cols="50" placeholder="Opening Statement (Optional)" onChange={(e) => onChange(e, "opening")}>{info.opening}</textarea>
+            <div className="opening">
+                <textarea id="opening" name="opening" rows="5" cols="50" placeholder="Opening Statement (Optional)" onChange={(e) => onChange(e, "opening")} value={info.opening}></textarea>
             </div>
             <button onClick={onSave}>Save</button>
 

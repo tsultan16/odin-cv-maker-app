@@ -116,7 +116,7 @@ function ExperienceListEdit({ items, onDeleteItem, onChangeItem, onSave, display
                                 <br />         
                             </div>               
                             <div className="job-responsibilities">
-                                <textarea id="responsibilities" name="responsibilities" rows="5" cols="50" placeholder="Job Responsibilities" onChange={(e) => onChangeItem(e, item, "responsibilities")}>{item.responsibilities}</textarea>
+                                <textarea id="responsibilities" name="responsibilities" rows="5" cols="50" placeholder="Job Responsibilities" onChange={(e) => onChangeItem(e, item, "responsibilities")} value={item.responsibilities}></textarea>
                             </div>
                             <button onClick={() => onDeleteItem(item.id)}>Delete</button>
                         </div>
