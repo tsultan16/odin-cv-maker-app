@@ -62,7 +62,7 @@ export default function Education() {
 
     return (
         <section className="education">
-            <h5>Your Education Details</h5>
+            <h3>Your Education Details</h3>
             <EducationList items={items} displayStyle={!editMode && !showAdd} />
             <EducationListEdit items={items} onDeleteItem={handleDeleteItem} onChangeItem={handleChangeItem} onSave={onSave} displayStyle={editMode  && !showAdd} />
             <div className="education-buttons">

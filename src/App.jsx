@@ -19,7 +19,6 @@ function Header() {
 function Main() {
   return (
     <main>
-      <h3>Main Section</h3>
       <General />
       <Education />
       <Experience />      
